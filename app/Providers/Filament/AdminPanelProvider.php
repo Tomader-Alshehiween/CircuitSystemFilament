@@ -2,11 +2,15 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Widgets\ACountsWidget;
 use App\Filament\Widgets\CountWidget;
 use App\Filament\Widgets\CircuitStatusPieChart;
 use App\Filament\Widgets\CiruitTypesChart;
 use App\Filament\Widgets\CompletedEventsLineChart;
 use App\Filament\Widgets\EventLineChart;
+use App\Filament\Widgets\InitiatedEventsLineChart;
+use App\Filament\Widgets\TheCircuitStatusPieChart;
+use App\Filament\Widgets\TheCircuitTypesPieChart;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -35,6 +39,7 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Amber,
             ])
+            ->databaseNotifications()
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
@@ -44,11 +49,11 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 //Widgets\AccountWidget::class,
                 //Widgets\FilamentInfoWidget::class,
-                CountWidget::class,
+                ACountsWidget::class,
                 CompletedEventsLineChart::class,
-                CircuitStatusPieChart::class,
-                EventLineChart::class,
-                CiruitTypesChart::class,
+                InitiatedEventsLineChart::class,
+                TheCircuitStatusPieChart::class,
+                TheCircuitTypesPieChart::class,
             ])
             ->middleware([
                 EncryptCookies::class,

@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Exports\CircuitExporter;
 use App\Filament\Resources\CircuitResource\Pages;
 use App\Filament\Resources\CircuitResource\RelationManagers;
 use App\Models\Circuit;
@@ -18,6 +19,7 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Actions\ExportAction;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -91,6 +93,9 @@ class CircuitResource extends Resource
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
 
+            ])
+            ->headerActions([
+                ExportAction::make()->exporter(CircuitExporter::class)
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

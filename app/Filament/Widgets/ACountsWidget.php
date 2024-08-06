@@ -9,7 +9,7 @@ use Filament\Support\Enums\IconPosition;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 
-class CountWidget extends BaseWidget
+class ACountsWidget extends BaseWidget
 {
     protected function getStats(): array
     {

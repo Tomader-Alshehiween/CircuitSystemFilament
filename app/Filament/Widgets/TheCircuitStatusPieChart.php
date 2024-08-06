@@ -3,11 +3,9 @@
 namespace App\Filament\Widgets;
 
 use App\Models\Circuit;
-use App\Models\CircuitStatus;
 use Filament\Widgets\ChartWidget;
 
-
-class CircuitStatusPieChart extends ChartWidget
+class TheCircuitStatusPieChart extends ChartWidget
 {
     protected static ?string $heading = 'Circuit Status';
 

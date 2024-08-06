@@ -7,7 +7,7 @@ use App\Models\CircuitTypes;
 use Filament\Widgets\ChartWidget;
 
 
-class CiruitTypesChart extends ChartWidget
+class TheCircuitTypesPieChart extends ChartWidget
 {
     protected static ?string $heading = 'Circuit types';
 

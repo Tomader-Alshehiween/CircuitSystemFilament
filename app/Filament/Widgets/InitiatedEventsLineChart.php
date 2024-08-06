@@ -9,9 +9,10 @@ use Filament\Widgets\ChartWidget;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
 
-class EventLineChart extends ChartWidget
+class InitiatedEventsLineChart extends ChartWidget
 {
     protected static ?string $heading = 'Events Initiated Chart';
+    //protected static string $view = 'filament.widgets.event-line-chart';
 
     protected function getData(): array
     {

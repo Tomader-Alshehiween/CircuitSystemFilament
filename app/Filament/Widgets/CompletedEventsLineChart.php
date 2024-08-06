@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 class CompletedEventsLineChart extends ChartWidget
 {
     protected static ?string $heading = 'Completed Events';
+    //protected static string $view = 'filament.widgets.completed-events-line-chart';
 
     protected function getData(): array
     {
