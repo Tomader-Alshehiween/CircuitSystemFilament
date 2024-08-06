@@ -20,6 +20,7 @@ class ServiceProviderResource extends Resource
     protected static ?string $model = ServiceProvider::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-truck';
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {
@@ -42,6 +43,7 @@ class ServiceProviderResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

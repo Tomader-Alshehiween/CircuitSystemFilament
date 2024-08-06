@@ -22,6 +22,8 @@ class EntityNameResource extends Resource
     protected static ?string $model = EntityName::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-building-office';
+    protected static ?string $navigationGroup = "Entities";
+    protected static ?int $navigationSort = 4;
 
     public static function form(Form $form): Form
     {
@@ -31,7 +33,9 @@ class EntityNameResource extends Resource
                 TextInput::make('entity_name')->label('Entity Name')->required(),
                 Select::make('entity_type_id')
                     ->label('Entity Type')
-                    ->options(EntityType::all()->pluck('entity_type', 'id')),
+                    ->options(EntityType::all()->pluck('entity_type', 'id'))
+                    ->required()
+                    ->searchable(),
             ]);
     }
 
@@ -41,13 +45,14 @@ class EntityNameResource extends Resource
             ->columns([
                 //
                 TextColumn::make('entity_name')->label('Entity Name'),
-                TextColumn::make('entity_types.entity_type')->label('Entity Type'),
+                TextColumn::make('entityType.entity_type')->label('Entity Type'),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

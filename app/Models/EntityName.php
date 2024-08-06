@@ -13,4 +13,7 @@ class EntityName extends Model
         'entity_name',
         'entity_type_id'
         ];
+    public function entityType(){
+        return $this->belongsTo(EntityType::class);
+    }
 }

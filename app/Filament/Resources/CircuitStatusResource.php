@@ -20,6 +20,8 @@ class CircuitStatusResource extends Resource
     protected static ?string $model = CircuitStatus::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-information-circle';
+    protected static ?string $navigationGroup = "Circuits";
+    protected static ?int $navigationSort = 6;
 
     public static function form(Form $form): Form
     {
@@ -42,6 +44,8 @@ class CircuitStatusResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
