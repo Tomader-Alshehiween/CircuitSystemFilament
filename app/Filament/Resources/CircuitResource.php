@@ -22,7 +22,9 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Actions\ExportAction;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-
+use App\Exports\CircuitExport;
+//use Illuminate\Support\Facades\Route;
+//use Maatwebsite\Excel\Facades\Excel;
 class CircuitResource extends Resource
 {
     protected static ?string $model = Circuit::class;
@@ -95,7 +97,10 @@ class CircuitResource extends Resource
 
             ])
             ->headerActions([
-                ExportAction::make()->exporter(CircuitExporter::class)
+                Tables\Actions\ButtonAction::make('export') // Use a custom button action
+                ->label('Export Circuits')
+                    ->url('/circuit-export') // Link to the export route
+                    ->color('success'), // Optional styling
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -117,6 +122,7 @@ class CircuitResource extends Resource
             'index' => Pages\ListCircuits::route('/'),
             'create' => Pages\CreateCircuit::route('/create'),
             'edit' => Pages\EditCircuit::route('/{record}/edit'),
+
         ];
     }
 }

@@ -17,6 +17,7 @@ use Filament\Resources\Pages\CreateRecord;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -64,11 +65,19 @@ class EventResource extends Resource
             ])
             ->filters([
                 //
+                SelectFilter::make('report_status_id')
+                    ->options(ReportStatus::all()->pluck('report_status', 'id')),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
 
+            ])
+            ->headerActions([
+                Tables\Actions\ButtonAction::make('export') // Use a custom button action
+                ->label('Export Events')
+                    ->url('/event-export') // Link to the export route
+                    ->color('success'), // Optional styling
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

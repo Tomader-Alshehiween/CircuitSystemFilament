@@ -16,3 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+use App\Exports\CircuitExport;
+use App\Exports\EventExport;
+use Maatwebsite\Excel\Facades\Excel;
+
+Route::get('/circuit-export', function() {
+    return Excel::download(new CircuitExport, 'circuits.xlsx');
+});
+
+Route::get('/event-export', function() {
+    return Excel::download(new EventExport, 'Events.xlsx');
+});
