@@ -14,6 +14,8 @@ return [
     | This will allow your users to receive real-time notifications.
     |
     */
+    'logo' => env('FILAMENT_LOGO', './public/images/logo.png'),
+
 
     'broadcasting' => [
 
